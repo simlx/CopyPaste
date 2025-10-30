@@ -17,8 +17,8 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:         "copypaste",
-		Width:         450,
+		Title:         "Quick Copy&Paste",
+		Width:         350,
 		Height:        585,
 		DisableResize: true,
 		AssetServer: &assetserver.Options{

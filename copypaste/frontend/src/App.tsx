@@ -3,8 +3,8 @@ import "./App.css";
 import { PressAltTab, PressCtrlV } from "../wailsjs/go/main/App";
 
 function App() {
-  const [texts, setTexts] = useState(Array(8).fill(""));
-  const [copied, setCopied] = useState(Array(8).fill(false));
+  const [texts, setTexts] = useState(Array(16).fill(""));
+  const [copied, setCopied] = useState(Array(16).fill(false));
 
   const copy = (index: number) => {
     navigator.clipboard
@@ -39,19 +39,21 @@ function App() {
 
   return (
     <div id="App">
-      {Array.from({ length: 8 }).map((_, index) => (
+      {Array.from({ length: 16 }).map((_, index) => (
         <table
           key={index}
           style={{
             width: "100%",
             height: "100%",
             borderWidth: "1px",
-            marginTop: "9px",
           }}
         >
           <tbody>
             <tr>
-              <td style={{ width: "80%", position: "relative" }}>
+              <td style={{ width: "60%", position: "relative" }}>
+                <input
+                  style={{ color: "#E0E0E0", backgroundColor: "#000040" }}
+                ></input>
                 <textarea
                   value={texts[index]}
                   onChange={(e) => handleChange(index, e.target.value)}
@@ -62,6 +64,7 @@ function App() {
                     resize: "none",
                     backgroundColor: "#000040",
                     color: "#E0E0E0",
+                    fontSize: "10px",
                   }}
                 />
                 {copied[index] && (
@@ -82,16 +85,14 @@ function App() {
               <td>
                 <div>
                   <button
-                    style={{ width: "100px" }}
-                    onClick={() => copy(index)}
-                  >
-                    Copy
-                  </button>
-                  <button
-                    style={{ width: "100px" }}
+                    style={{
+                      width: "100px",
+                      height: "40px",
+                      marginTop: "20px",
+                    }}
                     onClick={() => copy_paste(index)}
                   >
-                    Copy & Paste
+                    📋Copy & Paste
                   </button>
                 </div>
               </td>
